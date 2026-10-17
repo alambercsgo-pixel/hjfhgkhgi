@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340" font-family="Arial, sans-serif">
+  <!-- Схема: положение Земли на орбите в дни солнцестояний и равноденствий.
+       Ось Земли наклонена всегда в одну сторону (вершиной вправо). -->
+  <rect width="600" height="340" fill="#0f1b33"/>
+  <!-- орбита -->
+  <ellipse cx="300" cy="170" rx="220" ry="110" fill="none" stroke="#5d6f94" stroke-width="2" stroke-dasharray="6 6"/>
+  <!-- Солнце -->
+  <circle cx="300" cy="170" r="38" fill="#ffd34d"/>
+  <circle cx="300" cy="170" r="48" fill="none" stroke="#ffd34d" stroke-opacity="0.35" stroke-width="8"/>
+  <text x="300" y="175" text-anchor="middle" font-size="14" font-weight="bold" fill="#5a3d00">Солнце</text>
+
+  <!-- Земля: слева (июнь), внизу (сентябрь), справа (декабрь), вверху (март);
+       при взгляде с севера Земля движется против часовой стрелки -->
+  <g id="earths">
+    <g transform="translate(80 170)">
+      <circle r="20" fill="#3d8bfd"/>
+      <line x1="-9" y1="28" x2="9" y2="-28" stroke="#ffffff" stroke-width="2.5"/>
+    </g>
+    <g transform="translate(520 170)">
+      <circle r="20" fill="#3d8bfd"/>
+      <line x1="-9" y1="28" x2="9" y2="-28" stroke="#ffffff" stroke-width="2.5"/>
+    </g>
+    <g transform="translate(300 60)">
+      <circle r="16" fill="#3d8bfd"/>
+      <line x1="-7" y1="22" x2="7" y2="-22" stroke="#ffffff" stroke-width="2.5"/>
+    </g>
+    <g transform="translate(300 280)">
+      <circle r="16" fill="#3d8bfd"/>
+      <line x1="-7" y1="22" x2="7" y2="-22" stroke="#ffffff" stroke-width="2.5"/>
+    </g>
+  </g>
+
+  <!-- подписи -->
+  <g font-size="13" fill="#e6ecf8">
+    <text x="80" y="218" text-anchor="middle">≈ 21 июня</text>
+    <text x="80" y="234" text-anchor="middle" fill="#ffe27a">лето на севере</text>
+    <text x="520" y="218" text-anchor="middle">≈ 21 декабря</text>
+    <text x="520" y="234" text-anchor="middle" fill="#9cc3ff">зима на севере</text>
+    <text x="340" y="56">≈ 20 марта</text>
+    <text x="340" y="72" fill="#c9d3e6">весеннее равноденствие</text>
+    <text x="340" y="284">≈ 23 сентября</text>
+    <text x="340" y="300" fill="#c9d3e6">осеннее равноденствие</text>
+  </g>
+  <text x="16" y="28" font-size="13" fill="#9aa8c4">Наклон оси ≈ 23,4° сохраняет направление весь год</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320">
+  <!-- Осень: жёлто-красные деревья, листопад, пасмурное небо -->
+  <defs>
+    <linearGradient id="autumn-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9fb0c4"/>
+      <stop offset="1" stop-color="#f1e3cf"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="320" fill="url(#autumn-sky)"/>
+  <!-- тучи -->
+  <g fill="#e2e6ec">
+    <ellipse cx="120" cy="60" rx="56" ry="20"/>
+    <ellipse cx="90" cy="50" rx="30" ry="20"/>
+    <ellipse cx="380" cy="80" rx="60" ry="18"/>
+    <ellipse cx="410" cy="68" rx="30" ry="18"/>
+  </g>
+  <!-- земля -->
+  <path d="M0 220 Q160 195 300 215 T480 210 V320 H0 Z" fill="#b5843e"/>
+  <path d="M0 260 Q200 236 360 258 T480 255 V320 H0 Z" fill="#9c6d2c"/>
+  <!-- деревья -->
+  <g>
+    <rect x="86" y="160" width="14" height="70" fill="#5b3b22"/>
+    <circle cx="93" cy="132" r="42" fill="#e8892a"/>
+    <circle cx="66" cy="150" r="24" fill="#d9661c"/>
+    <circle cx="120" cy="150" r="24" fill="#f0a63a"/>
+  </g>
+  <g>
+    <rect x="236" y="150" width="12" height="76" fill="#5b3b22"/>
+    <circle cx="242" cy="122" r="38" fill="#c4392a"/>
+    <circle cx="218" cy="142" r="22" fill="#d9531f"/>
+    <circle cx="266" cy="140" r="22" fill="#b52f25"/>
+  </g>
+  <g>
+    <rect x="370" y="168" width="12" height="62" fill="#5b3b22"/>
+    <circle cx="376" cy="142" r="34" fill="#f2c14a"/>
+    <circle cx="354" cy="160" r="20" fill="#e8a33a"/>
+    <circle cx="398" cy="158" r="20" fill="#f6d36a"/>
+  </g>
+  <!-- падающие листья: ромбики разных цветов -->
+  <g>
+    <rect x="150" y="190" width="10" height="10" fill="#e8892a" transform="rotate(30 155 195)"/>
+    <rect x="180" y="230" width="9" height="9" fill="#c4392a" transform="rotate(-20 184 234)"/>
+    <rect x="310" y="200" width="10" height="10" fill="#f2c14a" transform="rotate(45 315 205)"/>
+    <rect x="330" y="250" width="9" height="9" fill="#d9531f" transform="rotate(15 334 254)"/>
+    <rect x="60" y="250" width="10" height="10" fill="#f2c14a" transform="rotate(-35 65 255)"/>
+    <rect x="430" y="240" width="9" height="9" fill="#c4392a" transform="rotate(25 434 244)"/>
+    <rect x="200" y="290" width="10" height="10" fill="#e8892a" transform="rotate(60 205 295)"/>
+  </g>
+  <!-- лужа с отражением неба -->
+  <ellipse cx="300" cy="292" rx="70" ry="12" fill="#a9bacd"/>
+  <ellipse cx="290" cy="290" rx="30" ry="4" fill="#d4dde8"/>
+</svg>

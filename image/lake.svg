@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <!-- Большое изображение 600 × 400: горное озеро на закате.
+       На test_img.html это же изображение показано миниатюрой шириной 100 px. -->
+  <defs>
+    <linearGradient id="lake-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b3a6b"/>
+      <stop offset="0.55" stop-color="#e8826a"/>
+      <stop offset="1" stop-color="#ffd59a"/>
+    </linearGradient>
+    <linearGradient id="lake-water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0a77f"/>
+      <stop offset="1" stop-color="#2b3a6b"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="250" fill="url(#lake-sky)"/>
+  <!-- солнце садится за горы -->
+  <circle cx="300" cy="200" r="46" fill="#ffe7a8"/>
+  <!-- горы: дальние светлее, ближние темнее -->
+  <polygon points="0,220 90,120 160,180 240,100 330,190 410,110 500,175 600,120 600,250 0,250" fill="#6d5b8c"/>
+  <polygon points="0,250 70,170 150,230 230,160 320,240 420,165 520,235 600,190 600,250" fill="#4a3f6e"/>
+  <!-- снежные вершины -->
+  <polygon points="240,100 222,124 236,120 248,128 258,116" fill="#f3eef8"/>
+  <polygon points="410,110 394,130 408,126 418,134 428,124" fill="#f3eef8"/>
+  <polygon points="90,120 76,138 88,134 98,142 106,132" fill="#f3eef8"/>
+  <!-- озеро -->
+  <rect y="250" width="600" height="150" fill="url(#lake-water)"/>
+  <!-- отражение солнца — полоски света на воде -->
+  <g fill="#ffe7a8" opacity="0.75">
+    <rect x="260" y="262" width="80" height="4" rx="2"/>
+    <rect x="272" y="276" width="56" height="4" rx="2"/>
+    <rect x="282" y="292" width="36" height="3" rx="1.5"/>
+    <rect x="290" y="308" width="20" height="3" rx="1.5"/>
+  </g>
+  <!-- берег и силуэты елей -->
+  <path d="M0 330 Q80 310 160 330 L160 400 H0 Z" fill="#1d2440"/>
+  <path d="M600 320 Q520 304 440 326 L440 400 H600 Z" fill="#1d2440"/>
+  <g fill="#141a30">
+    <polygon points="30,250 10,320 50,320"/>
+    <polygon points="70,230 45,322 95,322"/>
+    <polygon points="115,262 98,324 132,324"/>
+    <polygon points="480,244 458,318 502,318"/>
+    <polygon points="530,222 503,316 557,316"/>
+    <polygon points="575,256 558,314 592,314"/>
+  </g>
+  <!-- первые звёзды -->
+  <g fill="#ffffff">
+    <circle cx="60" cy="40" r="1.6"/><circle cx="140" cy="70" r="1.2"/><circle cx="210" cy="30" r="1.5"/>
+    <circle cx="390" cy="45" r="1.4"/><circle cx="470" cy="25" r="1.6"/><circle cx="540" cy="60" r="1.2"/>
+  </g>
+</svg>

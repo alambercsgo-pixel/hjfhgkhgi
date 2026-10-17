@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM_JS. Считываем информацию из DOM</title>
+    <link rel="icon" href="image/logo.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- ===== Общее меню (одинаковое на всех страницах) ===== -->
+    <header>
+        <nav aria-label="Основное меню">
+            <div>
+                <a class="nav__logo" href="index.html" title="На главную"><img src="image/logo.svg" alt="Логотип сайта — на главную" width="40" height="40"></a>
+                <b>Учебный сайт</b>
+            </div>
+            <ul class="nav__list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="info.html">Информация</a></li>
+                <li><a href="info.html#recipe">Закладка: рецепт</a></li>
+                <li><a href="test_img.html">Фото</a></li>
+                <li><a href="table.html">Таблица</a></li>
+                <li><a href="form.html">Формы</a></li>
+                <li><a href="DOM.html">DOM_JS</a></li>
+                <li><a href="passport.html">Кириллица → латиница</a></li>
+                <li><a href="task.html">Задача</a></li>
+                <li><a href="https://www.hse.ru/" target="_blank" rel="noopener">НИУ ВШЭ ↗</a> <small>(в новой вкладке)</small></li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        <h1>DOM_JS. Считываем информацию из DOM</h1>
+        <p>DOM — это дерево объектов, которое браузер строит из HTML-кода страницы.
+            JavaScript находит в нём элементы, читает их содержимое и меняет его —
+            без перезагрузки страницы.</p>
+        <p>Ниже — шаблон паспорта в виде картинки, а данные наложены поверх неё
+            отдельными абзацами. Кнопка «Показать загранпаспорт» меняет картинку на шаблон
+            загранпаспорта: данные переезжают на его поля, а фамилия, имя и место рождения
+            дописываются латиницей. Все данные вымышлены, шаблоны — учебные.</p>
+
+        <!-- ===== Шаблон паспорта картинкой + данные поверх него =====
+             Без CSS текст поверх картинки ставит встроенная SVG-графика:
+             <image> — картинка-шаблон, <foreignObject> — прямоугольник с координатами x, y,
+             внутри которого обычный HTML-абзац. Координаты для каждого шаблона задаёт scripts/dom.js.
+             Поле = <p><span hidden>Подпись</span><b>значение</b></p>:
+             childNodes[0] — скрытая подпись (на картинке она уже напечатана),
+             childNodes[1] — <b> со значением -->
+        <!-- Обычный блок, а не <figure>: у <figure> браузер по умолчанию делает отступы
+             по 40 px слева и справа, и без CSS их не убрать — на телефоне рисунок не поместился бы -->
+        <div role="figure" aria-labelledby="passport-caption">
+            <svg id="passport" width="400" height="563" viewBox="0 0 500 704">
+                <image id="passport-template" href="image/passport-ru.svg" x="0" y="0" width="500" height="704"/>
+                <image id="passport-photo" href="image/photo.svg" x="37" y="405" width="121" height="166"/>
+                <foreignObject data-field="issued" x="40" y="70" width="420" height="52"><p class="pass-field"><span hidden>Кем выдан</span><b class="pass-value">УЧЕБНЫЙ ОТДЕЛ № 1 ГОРОДА ОБРАЗЦОВО</b></p></foreignObject>
+                <foreignObject data-field="issueDate" x="40" y="165" width="180" height="52"><p class="pass-field"><span hidden>Дата выдачи</span><b class="pass-value">01.01.2014</b></p></foreignObject>
+                <foreignObject data-field="code" x="260" y="165" width="200" height="52"><p class="pass-field"><span hidden>Код подразделения</span><b class="pass-value">000-000</b></p></foreignObject>
+                <foreignObject data-field="surname" x="190" y="405" width="285" height="52"><p class="pass-field"><span hidden>Фамилия</span><b class="pass-value" id="surname">ИВАНОВ</b></p></foreignObject>
+                <foreignObject data-field="name" x="190" y="455" width="285" height="52"><p class="pass-field"><span hidden>Имя</span><b class="pass-value" id="first-name">ИВАН</b></p></foreignObject>
+                <foreignObject data-field="patronymic" x="190" y="505" width="285" height="52"><p class="pass-field"><span hidden>Отчество</span><b class="pass-value">ИВАНОВИЧ</b></p></foreignObject>
+                <foreignObject data-field="sex" x="190" y="555" width="95" height="52"><p class="pass-field"><span hidden>Пол</span><b class="pass-value">МУЖ.</b></p></foreignObject>
+                <foreignObject data-field="birth" x="300" y="555" width="175" height="52"><p class="pass-field"><span hidden>Дата рождения</span><b class="pass-value">01.01.2000</b></p></foreignObject>
+                <foreignObject data-field="place" x="190" y="615" width="285" height="52"><p class="pass-field"><span hidden>Место рождения</span><b class="pass-value">ГОР. ОБРАЗЦОВО</b></p></foreignObject>
+            </svg>
+            <br>
+            <small id="passport-caption">Учебный шаблон внутреннего паспорта (страницы 2 и 3). Данные наложены поверх картинки.</small>
+        </div>
+
+        <p>
+            <button type="button" id="switch-template" aria-pressed="false" aria-controls="passport">Показать загранпаспорт</button>
+            <output id="template-status" for="switch-template" aria-live="polite">Сейчас: внутренний паспорт</output>
+        </p>
+
+        <!-- ===== 1. Чтение данных ===== -->
+        <section id="read">
+            <h2 id="read-title">1. Получаем элементы и читаем значения</h2>
+            <p>Кнопка выполняет те же команды, что вводятся в консоли инструментов
+                разработчика, и выводит результат ниже — в том же виде, что и консоль:
+                <code>&gt;</code> — команда, <code>←</code> — результат.</p>
+            <p>
+                <button type="button" id="read-button">Считать фамилию, имя и год рождения</button>
+                <button type="button" id="clear-log">Очистить вывод</button>
+            </p>
+            <!-- Вывод команд. Скрипт добавляет сюда абзацы с командами и результатами -->
+            <div id="dom-log" role="log" aria-labelledby="read-title">
+                <p><i>Здесь появится вывод команд.</i></p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- ===== 2. Изменение текста ===== -->
+        <section id="change">
+            <h2>2. Меняем текст на странице</h2>
+            <p>Введите новые фамилию и имя: под полями сразу видно, что получится,
+                а кнопка «Применить» записывает их в макет. Страница при этом не перезагружается.
+                Изменённые поля выделяются <mark>жёлтым</mark>.</p>
+
+            <form id="change-form" action="DOM.html" method="get">
+                <fieldset>
+                    <legend>Новые данные</legend>
+                    <p>
+                        <label for="new-surname">Новая фамилия</label><br>
+                        <input type="text" id="new-surname" name="new_surname" maxlength="30"
+                               placeholder="Например, Петров" aria-describedby="change-error">
+                    </p>
+                    <p>
+                        <label for="new-name">Новое имя</label><br>
+                        <input type="text" id="new-name" name="new_name" maxlength="30"
+                               placeholder="Например, Пётр" aria-describedby="change-error">
+                    </p>
+                    <p>Предпросмотр: <b><output id="preview" for="new-surname new-name">—</output></b></p>
+                    <p><strong id="change-error" hidden></strong></p>
+                </fieldset>
+                <p>
+                    <input type="submit" value="Применить">
+                    <button type="button" id="restore-button">Вернуть исходные</button>
+                </p>
+            </form>
+            <p id="change-counter">Изменений: 0</p>
+        </section>
+
+        <hr>
+
+        <!-- ===== 3. События ===== -->
+        <section id="events">
+            <h2>3. Обрабатываем события</h2>
+            <p>Нажмите на любое поле макета (или выберите его клавишей Tab и нажмите Enter):
+                скрипт узнает, какое поле выбрано, выделит его и покажет подпись и значение.</p>
+            <p id="event-info" role="status" aria-live="polite">Поле пока не выбрано.</p>
+        </section>
+
+        <hr>
+
+        <!-- ===== 4. Скриншот ===== -->
+        <section id="screenshot">
+            <h2>4. Скриншот консоли</h2>
+            <p>По заданию те же данные нужно получить вручную в инструментах разработчика:</p>
+            <ol>
+                <li>Откройте эту страницу и нажмите <kbd>F12</kbd> → вкладка <b>Console</b>.</li>
+                <li>Введите по очереди команды (номера абзацев подставлены скриптом):
+                    <ul>
+                        <li id="cmd-surname">—</li>
+                        <li id="cmd-name">—</li>
+                        <li id="cmd-year">—</li>
+                    </ul>
+                </li>
+                <li>Сделайте скриншот окна с результатами и сохраните его как <code>image/dom-console.png</code>.</li>
+                <li>Уберите комментарий вокруг блока <code>&lt;figure&gt;</code> ниже в коде этой страницы.</li>
+            </ol>
+            <!-- Раскомментируйте после того, как положите скриншот в папку image:
+            <figure>
+                <a href="image/dom-console.png" target="_blank" rel="noopener"><img src="image/dom-console.png" alt="Скриншот консоли: получение фамилии, имени и года рождения из DOM" width="280"></a>
+                <figcaption>Получение данных из DOM в инструментах разработчика. Нажмите, чтобы увеличить.</figcaption>
+            </figure>
+            -->
+        </section>
+    </main>
+
+    <footer>
+        <hr>
+        <p><small>Учебный сайт · контрольная работа по HTML и JavaScript</small></p>
+    </footer>
+
+    <!-- Выделение текущей страницы и подсветка пунктов меню -->
+    <script src="scripts/nav.js"></script>
+    <!-- Транслитерация (общая с passport.html) и демонстрация работы с DOM -->
+    <script src="scripts/translit.js"></script>
+    <script src="scripts/dom.js"></script>
+</body>
+</html>

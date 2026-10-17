@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 704" width="500" height="704" font-family="Arial, sans-serif">
+  <!-- Учебный шаблон внутреннего паспорта: страница 2 (сверху) и страница 3 (снизу).
+       Нарисован для контрольной работы: без герба, серии, номера и защитных элементов,
+       с пометкой «учебный макет · не документ». Поля пустые — данные накладывает DOM.html. -->
+  <defs>
+    <!-- Волнистый узор фона (имитация защитной сетки) -->
+    <pattern id="ru-waves" width="44" height="14" patternUnits="userSpaceOnUse">
+      <path d="M0 7 Q11 0 22 7 T44 7" fill="none" stroke="#e6cbc1" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Фон обеих страниц -->
+  <rect width="500" height="704" fill="#f7ebe5"/>
+  <rect width="500" height="704" fill="url(#ru-waves)"/>
+  <!-- Розетки в центре страниц -->
+  <g fill="none" stroke="#ecd5cc" stroke-width="1.2">
+    <circle cx="250" cy="176" r="60"/><circle cx="250" cy="176" r="90"/><circle cx="250" cy="176" r="120"/>
+    <circle cx="250" cy="528" r="60"/><circle cx="250" cy="528" r="90"/><circle cx="250" cy="528" r="120"/>
+  </g>
+  <rect x="1" y="1" width="498" height="702" fill="none" stroke="#d6b2a4" stroke-width="2"/>
+
+  <!-- Линия сгиба между страницами -->
+  <line x1="0" y1="352" x2="500" y2="352" stroke="#c9a091" stroke-width="2" stroke-dasharray="8 5"/>
+
+  <!-- ================= Страница 2 ================= -->
+  <text x="250" y="30" text-anchor="middle" font-size="11" letter-spacing="1.5" fill="#8a6457">УЧЕБНЫЙ МАКЕТ ВНУТРЕННЕГО ПАСПОРТА · СТР. 2</text>
+
+  <g font-size="12" fill="#7d5a4e">
+    <text x="40" y="70">Паспорт выдан</text>
+    <text x="40" y="215">Дата выдачи</text>
+    <text x="260" y="215">Код подразделения</text>
+    <text x="40" y="305">Личная подпись</text>
+  </g>
+  <g stroke="#b88d7e" stroke-width="1">
+    <line x1="40" y1="105" x2="460" y2="105"/>
+    <line x1="40" y1="140" x2="460" y2="140"/>
+    <line x1="40" y1="200" x2="220" y2="200"/>
+    <line x1="260" y1="200" x2="460" y2="200"/>
+    <line x1="40" y1="290" x2="220" y2="290"/>
+  </g>
+
+  <!-- ================= Страница 3 ================= -->
+  <text x="250" y="380" text-anchor="middle" font-size="11" letter-spacing="1.5" fill="#8a6457">УЧЕБНЫЙ МАКЕТ ВНУТРЕННЕГО ПАСПОРТА · СТР. 3</text>
+
+  <!-- Рамка для фотографии (саму фотографию накладывает DOM.html) -->
+  <rect x="30" y="398" width="135" height="180" fill="#ffffff" stroke="#b88d7e" stroke-width="1.5"/>
+
+  <g font-size="12" fill="#7d5a4e">
+    <text x="190" y="412">Фамилия</text>
+    <text x="190" y="462">Имя</text>
+    <text x="190" y="512">Отчество</text>
+    <text x="190" y="562">Пол</text>
+    <text x="300" y="562">Дата рождения</text>
+    <text x="190" y="622">Место рождения</text>
+  </g>
+  <g stroke="#b88d7e" stroke-width="1">
+    <line x1="190" y1="440" x2="475" y2="440"/>
+    <line x1="190" y1="490" x2="475" y2="490"/>
+    <line x1="190" y1="540" x2="475" y2="540"/>
+    <line x1="190" y1="590" x2="280" y2="590"/>
+    <line x1="300" y1="590" x2="475" y2="590"/>
+    <line x1="190" y1="650" x2="475" y2="650"/>
+  </g>
+
+  <!-- Водяные знаки -->
+  <g font-size="26" font-weight="bold" fill="#c62828" fill-opacity="0.13" text-anchor="middle" letter-spacing="2">
+    <text x="250" y="250" transform="rotate(-18 250 250)">УЧЕБНЫЙ МАКЕТ · НЕ ДОКУМЕНТ</text>
+    <text x="250" y="690" transform="rotate(-8 250 690)">УЧЕБНЫЙ МАКЕТ · НЕ ДОКУМЕНТ</text>
+  </g>
+</svg>

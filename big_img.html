@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Большое изображение</title>
+    <link rel="icon" href="image/logo.svg" type="image/svg+xml">
+</head>
+<!-- Страница открывается в новой вкладке по миниатюре с test_img.html,
+     поэтому общего меню на ней нет (как в образце): только изображение по центру окна -->
+<body>
+    <main>
+        <!-- Без CSS по центру ставит таблица на всю ширину:
+             align="center" — по горизонтали, valign="middle" — по вертикали.
+             Высоту таблицы под размер окна задаёт scripts/big_img.js -->
+        <table id="center-box" width="100%">
+            <tr>
+                <td align="center" valign="middle">
+                    <figure>
+                        <img src="image/lake.svg" alt="Горное озеро на закате: заснеженные вершины, солнце садится за горы, на воде блики, по берегам силуэты елей" width="600" height="400">
+                        <figcaption>Горное озеро на закате · 600&nbsp;×&nbsp;400&nbsp;px</figcaption>
+                    </figure>
+                </td>
+            </tr>
+        </table>
+    </main>
+
+    <!-- Высота таблицы = высота окна, чтобы изображение стояло по центру и по вертикали -->
+    <script src="scripts/big_img.js"></script>
+</body>
+</html>

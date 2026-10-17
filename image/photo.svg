@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="120" height="160">
+  <!-- Условное изображение вместо фотографии в учебном макете паспорта: серый силуэт -->
+  <rect width="120" height="160" fill="#e4e7ec"/>
+  <circle cx="60" cy="62" r="28" fill="#a9b1bd"/>
+  <path d="M14 160 q4 -50 46 -50 q42 0 46 50 z" fill="#a9b1bd"/>
+  <text x="60" y="152" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#6b7482">ФОТО</text>
+</svg>

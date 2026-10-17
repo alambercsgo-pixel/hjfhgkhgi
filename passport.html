@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изменяем кириллицу на латиницу по клику</title>
+    <link rel="icon" href="image/logo.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- ===== Общее меню (одинаковое на всех страницах) ===== -->
+    <header>
+        <nav aria-label="Основное меню">
+            <div>
+                <a class="nav__logo" href="index.html" title="На главную"><img src="image/logo.svg" alt="Логотип сайта — на главную" width="40" height="40"></a>
+                <b>Учебный сайт</b>
+            </div>
+            <ul class="nav__list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="info.html">Информация</a></li>
+                <li><a href="info.html#recipe">Закладка: рецепт</a></li>
+                <li><a href="test_img.html">Фото</a></li>
+                <li><a href="table.html">Таблица</a></li>
+                <li><a href="form.html">Формы</a></li>
+                <li><a href="DOM.html">DOM_JS</a></li>
+                <li><a href="passport.html">Кириллица → латиница</a></li>
+                <li><a href="task.html">Задача</a></li>
+                <li><a href="https://www.hse.ru/" target="_blank" rel="noopener">НИУ ВШЭ ↗</a> <small>(в новой вкладке)</small></li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        <h1>Изменяем кириллицу на латиницу по клику</h1>
+        <p>Ниже — учебный макет разворота паспорта (страницы 2 и 3) с вымышленными данными.
+            Кнопка «Заменить» переводит данные на латиницу по правилам транслитерации,
+            которые используются в загранпаспортах, а повторное нажатие возвращает кириллицу.
+            Изменённые поля выделяются <mark>жёлтым</mark>.</p>
+
+        <!-- =================================================================
+             Учебный макет. Все данные вымышлены. Это не документ.
+             Разворот свёрстан таблицей: левая ячейка — страница 2, правая — страница 3.
+             Каждое поле — абзац <p>: подпись текстом, значение в <b>.
+             Так значение можно получить из DOM: p.childNodes[1].innerText
+             Атрибут data-translit отмечает поля, которые меняются по кнопке.
+             ================================================================= -->
+        <table id="passport" border="1" cellspacing="0" cellpadding="12" bgcolor="#f7f1e3">
+            <caption><mark><b>УЧЕБНЫЙ МАКЕТ · НЕ ДОКУМЕНТ.</b></mark> Все данные вымышлены.</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Страница 2</th>
+                    <th scope="col">Страница 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td valign="top">
+                        <p class="pass-field">Кем выдан <b class="pass-value" data-translit>УЧЕБНЫЙ ОТДЕЛ № 1 ГОРОДА ОБРАЗЦОВО</b></p>
+                        <p class="pass-field">Дата выдачи <b class="pass-value">01.01.2014</b></p>
+                        <p class="pass-field">Код подразделения <b class="pass-value">000-000</b></p>
+                        <p><small>Подпись владельца: ____________</small></p>
+                    </td>
+                    <td valign="top">
+                        <img src="image/photo.svg" alt="Условный серый силуэт вместо фотографии" width="90" height="120">
+                        <p class="pass-field">Фамилия <b class="pass-value" data-translit>ИВАНОВ</b></p>
+                        <p class="pass-field">Имя <b class="pass-value" data-translit>ИВАН</b></p>
+                        <p class="pass-field">Отчество <b class="pass-value" data-translit>ИВАНОВИЧ</b></p>
+                        <p class="pass-field">Пол <b class="pass-value" data-translit="sex">МУЖ.</b></p>
+                        <p class="pass-field">Дата рождения <b class="pass-value">01.01.2000</b></p>
+                        <p class="pass-field">Место рождения <b class="pass-value" data-translit>ГОР. ОБРАЗЦОВО</b></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            <button type="button" id="change-lang" aria-pressed="false" aria-controls="passport">Заменить</button>
+            <output id="lang-status" for="change-lang" aria-live="polite">Сейчас: кириллица</output>
+        </p>
+    </main>
+
+    <footer>
+        <hr>
+        <p><small>Учебный сайт · контрольная работа по HTML и JavaScript</small></p>
+    </footer>
+
+    <!-- Выделение текущей страницы и подсветка пунктов меню -->
+    <script src="scripts/nav.js"></script>
+    <!-- Транслитерация (общая с DOM.html) и переключение кириллица ⇄ латиница -->
+    <script src="scripts/translit.js"></script>
+    <script src="scripts/passport.js"></script>
+</body>
+</html>

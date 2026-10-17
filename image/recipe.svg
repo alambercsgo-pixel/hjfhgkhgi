@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320">
+  <!-- Иллюстрация к рецепту: сырники на тарелке со сметаной и ягодами -->
+  <rect width="480" height="320" fill="#f3ead9"/>
+  <!-- салфетка -->
+  <rect x="40" y="40" width="400" height="250" rx="18" fill="#dfe8f5"/>
+  <g stroke="#c8d6ec" stroke-width="2">
+    <line x1="40" y1="90" x2="440" y2="90"/>
+    <line x1="40" y1="140" x2="440" y2="140"/>
+    <line x1="40" y1="190" x2="440" y2="190"/>
+    <line x1="40" y1="240" x2="440" y2="240"/>
+  </g>
+  <!-- тарелка -->
+  <ellipse cx="240" cy="170" rx="170" ry="112" fill="#ffffff" stroke="#d5d9e0" stroke-width="3"/>
+  <ellipse cx="240" cy="170" rx="128" ry="82" fill="none" stroke="#e8ebf0" stroke-width="3"/>
+  <!-- сырники: каждый — тёмный край, светлая середина, блик -->
+  <g>
+    <ellipse cx="180" cy="190" rx="56" ry="34" fill="#b86a1e"/>
+    <ellipse cx="180" cy="184" rx="50" ry="27" fill="#e2a24a"/>
+    <ellipse cx="166" cy="178" rx="18" ry="6" fill="#f2c27a"/>
+  </g>
+  <g>
+    <ellipse cx="292" cy="196" rx="56" ry="34" fill="#b86a1e"/>
+    <ellipse cx="292" cy="190" rx="50" ry="27" fill="#e2a24a"/>
+    <ellipse cx="278" cy="184" rx="18" ry="6" fill="#f2c27a"/>
+  </g>
+  <g>
+    <ellipse cx="236" cy="142" rx="56" ry="34" fill="#b86a1e"/>
+    <ellipse cx="236" cy="136" rx="50" ry="27" fill="#e2a24a"/>
+    <ellipse cx="222" cy="130" rx="18" ry="6" fill="#f2c27a"/>
+  </g>
+  <!-- сметана -->
+  <path d="M206 128 q14 -26 32 -10 q18 -12 26 8 q8 14 -14 18 q-30 6 -44 -16 z" fill="#fffdf6" stroke="#ece6d6" stroke-width="2"/>
+  <!-- ягоды -->
+  <g fill="#c8203a">
+    <circle cx="340" cy="140" r="11"/>
+    <circle cx="356" cy="156" r="10"/>
+    <circle cx="334" cy="162" r="9"/>
+  </g>
+  <g fill="#ffffff" opacity="0.7">
+    <circle cx="336" cy="136" r="3"/>
+    <circle cx="352" cy="152" r="3"/>
+    <circle cx="331" cy="158" r="2.5"/>
+  </g>
+  <!-- листик мяты -->
+  <path d="M352 128 q20 -18 34 -6 q-12 18 -34 6 z" fill="#3f9a4f"/>
+  <path d="M352 128 l30 -8" stroke="#2c7a3b" stroke-width="2"/>
+</svg>

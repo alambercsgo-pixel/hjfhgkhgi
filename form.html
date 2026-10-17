@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Формы</title>
+    <link rel="icon" href="image/logo.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- ===== Общее меню (одинаковое на всех страницах) ===== -->
+    <header>
+        <nav aria-label="Основное меню">
+            <div>
+                <a class="nav__logo" href="index.html" title="На главную"><img src="image/logo.svg" alt="Логотип сайта — на главную" width="40" height="40"></a>
+                <b>Учебный сайт</b>
+            </div>
+            <ul class="nav__list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="info.html">Информация</a></li>
+                <li><a href="info.html#recipe">Закладка: рецепт</a></li>
+                <li><a href="test_img.html">Фото</a></li>
+                <li><a href="table.html">Таблица</a></li>
+                <li><a href="form.html">Формы</a></li>
+                <li><a href="DOM.html">DOM_JS</a></li>
+                <li><a href="passport.html">Кириллица → латиница</a></li>
+                <li><a href="task.html">Задача</a></li>
+                <li><a href="https://www.hse.ru/" target="_blank" rel="noopener">НИУ ВШЭ ↗</a> <small>(в новой вкладке)</small></li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        <h1>Формы</h1>
+        <p>На странице две формы. Поля со звёздочкой (*) обязательны. После нажатия «Отправить»
+            данные проверяются и обрабатываются прямо на этой странице: результат появится под
+            формой, на сервер ничего не уходит, в браузере ничего не сохраняется.</p>
+
+        <!-- =====================================================================
+             Форма 1. Контактные данные
+             data-remote — адрес сервера. Пусто: данные обрабатываются на странице.
+             Чтобы отправлять на сервер преподавателя, впишите его адрес, например:
+             data-remote="http://адрес-сервера/cgi-bin/form_api.py"
+             Сообщения об ошибках (<strong class="field-error">) скрыты атрибутом hidden,
+             скрипт показывает их только при ошибке.
+             ===================================================================== -->
+        <section id="contacts">
+            <h2>Форма 1. Контактные данные</h2>
+
+            <form id="contact-form" class="js-form" action="form.html" method="get" data-remote="">
+                <fieldset>
+                    <legend>ФИО</legend>
+
+                    <p class="form-row">
+                        <label for="last_name">Фамилия <span class="req" aria-hidden="true">*</span></label><br>
+                        <input type="text" id="last_name" name="last_name" required
+                               minlength="2" maxlength="40" autocomplete="family-name"
+                               pattern="[А-Яа-яЁёA-Za-z\- ]+"
+                               title="Только буквы, дефис и пробел"
+                               aria-describedby="last_name-error">
+                        <strong class="field-error" id="last_name-error" hidden></strong>
+                    </p>
+
+                    <p class="form-row">
+                        <label for="first_name">Имя <span class="req" aria-hidden="true">*</span></label><br>
+                        <input type="text" id="first_name" name="first_name" required
+                               minlength="2" maxlength="40" autocomplete="given-name"
+                               pattern="[А-Яа-яЁёA-Za-z\- ]+"
+                               title="Только буквы, дефис и пробел"
+                               aria-describedby="first_name-error">
+                        <strong class="field-error" id="first_name-error" hidden></strong>
+                    </p>
+
+                    <p class="form-row">
+                        <label for="middle_name">Отчество <small>(если есть)</small></label><br>
+                        <input type="text" id="middle_name" name="middle_name"
+                               minlength="2" maxlength="40" autocomplete="additional-name"
+                               pattern="[А-Яа-яЁёA-Za-z\- ]+"
+                               title="Только буквы, дефис и пробел"
+                               aria-describedby="middle_name-error">
+                        <strong class="field-error" id="middle_name-error" hidden></strong>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Учёба и контакты</legend>
+
+                    <p class="form-row">
+                        <label for="group">Учебная группа <span class="req" aria-hidden="true">*</span></label><br>
+                        <input type="text" id="group" name="group" required
+                               maxlength="15" placeholder="Например, БИВ251"
+                               pattern="(?=.*[0-9])[А-Яа-яЁёA-Za-z0-9\-]{2,15}"
+                               title="Буквы и цифры, можно дефис, например БИВ251 или ИВТ-21-1"
+                               aria-describedby="group-hint group-error">
+                        <strong class="field-error" id="group-error" hidden></strong><br>
+                        <small id="group-hint">Буквы и цифры, можно дефис.</small>
+                    </p>
+
+                    <p class="form-row">
+                        <label for="age">Возраст</label><br>
+                        <input type="number" id="age" name="age" min="14" max="100" step="1"
+                               aria-describedby="age-error">
+                        <strong class="field-error" id="age-error" hidden></strong>
+                    </p>
+
+                    <p class="form-row">
+                        <label for="phone">Мобильный телефон <span class="req" aria-hidden="true">*</span></label><br>
+                        <input type="tel" id="phone" name="phone" required
+                               maxlength="20" autocomplete="tel" placeholder="+7 900 123-45-67"
+                               data-check="ru-mobile"
+                               aria-describedby="phone-hint phone-error">
+                        <strong class="field-error" id="phone-error" hidden></strong><br>
+                        <small id="phone-hint">Российский номер: +7 или 8 и ещё 10 цифр.</small>
+                    </p>
+
+                    <p class="form-row">
+                        <label for="email">Электронная почта <span class="req" aria-hidden="true">*</span></label><br>
+                        <input type="email" id="email" name="email" required
+                               maxlength="80" autocomplete="email" placeholder="name@example.ru"
+                               aria-describedby="email-error">
+                        <strong class="field-error" id="email-error" hidden></strong>
+                    </p>
+
+                    <p class="form-row">
+                        <label for="send_date">Дата отправки <span class="req" aria-hidden="true">*</span></label><br>
+                        <!-- data-default="today": скрипт подставит сегодняшнюю дату -->
+                        <input type="date" id="send_date" name="send_date" required
+                               data-default="today" data-max="today"
+                               aria-describedby="send_date-error">
+                        <strong class="field-error" id="send_date-error" hidden></strong>
+                    </p>
+                </fieldset>
+
+                <p>
+                    <input type="submit" value="Отправить">
+                    <input type="reset" value="Очистить">
+                </p>
+            </form>
+
+            <!-- Сюда скрипт выводит результат проверки -->
+            <div class="form-result" id="contact-form-result" role="status" aria-live="polite" hidden></div>
+        </section>
+
+        <hr>
+
+        <!-- =====================================================================
+             Форма 2. Отзыв о рецепте сырников (оригинальные данные по теме сайта)
+             Типы полей: text, radio, number, range, date, checkbox, textarea,
+             password, hidden. У полей есть значения по умолчанию.
+             ===================================================================== -->
+        <section id="review">
+            <h2>Форма 2. Отзыв о рецепте</h2>
+            <p>Приготовили <a href="info.html#recipe">сырники по рецепту</a>?
+                Расскажите, что получилось.</p>
+
+            <form id="review-form" class="js-form" action="form.html" method="get" data-remote="">
+                <!-- Скрытые поля: какой рецепт оценивают и версия формы -->
+                <input type="hidden" name="recipe_id" value="syrniki" data-label="Рецепт (скрытое поле)">
+                <input type="hidden" name="form_version" value="1" data-label="Версия формы (скрытое поле)">
+
+                <fieldset>
+                    <legend>О вас</legend>
+
+                    <p class="form-row">
+                        <label for="reviewer_name">Ваше имя <span class="req" aria-hidden="true">*</span></label><br>
+                        <input type="text" id="reviewer_name" name="reviewer_name" required
+                               minlength="2" maxlength="40" value="Гость"
+                               aria-describedby="reviewer_name-error">
+                        <strong class="field-error" id="reviewer_name-error" hidden></strong>
+                    </p>
+
+                    <p class="form-row">
+                        <label for="cooking_date">Когда готовили <span class="req" aria-hidden="true">*</span></label><br>
+                        <input type="date" id="cooking_date" name="cooking_date" required
+                               data-default="today" data-max="today"
+                               aria-describedby="cooking_date-error">
+                        <strong class="field-error" id="cooking_date-error" hidden></strong>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Результат</legend>
+
+                    <!-- radio: выбор одного варианта, по умолчанию отмечен «Отлично» -->
+                    <p class="form-row" role="radiogroup" aria-labelledby="result-label" aria-describedby="result-error">
+                        <span class="form-label" id="result-label">Как получились сырники? <span class="req" aria-hidden="true">*</span></span><br>
+                        <label class="choice"><input type="radio" name="result" value="excellent" required checked> Отлично</label><br>
+                        <label class="choice"><input type="radio" name="result" value="good"> Хорошо, но можно лучше</label><br>
+                        <label class="choice"><input type="radio" name="result" value="failed"> Не получились</label>
+                        <strong class="field-error" id="result-error" hidden></strong>
+                    </p>
+
+                    <p class="form-row">
+                        <label for="portions">Сколько штук получилось <span class="req" aria-hidden="true">*</span></label><br>
+                        <input type="number" id="portions" name="portions" required
+                               min="1" max="50" step="1" value="10"
+                               aria-describedby="portions-error">
+                        <strong class="field-error" id="portions-error" hidden></strong>
+                    </p>
+
+                    <p class="form-row">
+                        <label for="sweetness">Сладость <small>(0 — совсем не сладко, 10 — очень сладко)</small></label><br>
+                        <input type="range" id="sweetness" name="sweetness" min="0" max="10" step="1" value="5"
+                               data-label="Сладость (из 10)" aria-describedby="sweetness-hint"><br>
+                        <small id="sweetness-hint">Выбрано: <output id="sweetness-value" for="sweetness">5</output> из 10</small>
+                    </p>
+
+                    <p class="form-row">
+                        <span class="form-label">С чем подавали</span><br>
+                        <label class="choice"><input type="checkbox" name="topping" value="sour_cream" checked> Сметана</label><br>
+                        <label class="choice"><input type="checkbox" name="topping" value="jam"> Варенье</label><br>
+                        <label class="choice"><input type="checkbox" name="topping" value="honey"> Мёд</label><br>
+                        <label class="choice"><input type="checkbox" name="topping" value="berries"> Ягоды</label>
+                    </p>
+
+                    <p class="form-row">
+                        <label class="choice"><input type="checkbox" name="cook_again" value="yes" checked> Приготовлю ещё раз</label>
+                    </p>
+
+                    <p class="form-row">
+                        <label for="comment">Комментарий</label><br>
+                        <textarea id="comment" name="comment" rows="4" cols="30" maxlength="500"
+                                  placeholder="Что получилось, что бы вы изменили в рецепте"
+                                  aria-describedby="comment-hint comment-error"></textarea>
+                        <strong class="field-error" id="comment-error" hidden></strong><br>
+                        <small id="comment-hint">До 500 символов.</small>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Защита отзыва</legend>
+                    <p class="form-row">
+                        <label for="edit_password">Пароль для изменения отзыва <span class="req" aria-hidden="true">*</span></label><br>
+                        <input type="password" id="edit_password" name="edit_password" required
+                               minlength="6" maxlength="40" autocomplete="new-password"
+                               aria-describedby="edit_password-hint edit_password-error">
+                        <strong class="field-error" id="edit_password-error" hidden></strong><br>
+                        <small id="edit_password-hint">Не меньше 6 символов. Пароль нигде не сохраняется и в результате не показывается.</small>
+                    </p>
+                </fieldset>
+
+                <p>
+                    <input type="submit" value="Отправить">
+                    <input type="reset" value="Очистить">
+                </p>
+            </form>
+
+            <div class="form-result" id="review-form-result" role="status" aria-live="polite" hidden></div>
+        </section>
+    </main>
+
+    <footer>
+        <hr>
+        <p><small>Учебный сайт · контрольная работа по HTML и JavaScript</small></p>
+    </footer>
+
+    <!-- Выделение текущей страницы и подсветка пунктов меню -->
+    <script src="scripts/nav.js"></script>
+    <!-- Проверка и обработка форм -->
+    <script src="scripts/form.js"></script>
+</body>
+</html>

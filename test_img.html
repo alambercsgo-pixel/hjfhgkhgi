@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фотографии</title>
+    <link rel="icon" href="image/logo.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- ===== Общее меню (одинаковое на всех страницах) ===== -->
+    <header>
+        <nav aria-label="Основное меню">
+            <div>
+                <a class="nav__logo" href="index.html" title="На главную"><img src="image/logo.svg" alt="Логотип сайта — на главную" width="40" height="40"></a>
+                <b>Учебный сайт</b>
+            </div>
+            <ul class="nav__list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="info.html">Информация</a></li>
+                <li><a href="info.html#recipe">Закладка: рецепт</a></li>
+                <li><a href="test_img.html">Фото</a></li>
+                <li><a href="table.html">Таблица</a></li>
+                <li><a href="form.html">Формы</a></li>
+                <li><a href="DOM.html">DOM_JS</a></li>
+                <li><a href="passport.html">Кириллица → латиница</a></li>
+                <li><a href="task.html">Задача</a></li>
+                <li><a href="https://www.hse.ru/" target="_blank" rel="noopener">НИУ ВШЭ ↗</a> <small>(в новой вкладке)</small></li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        <h1>Фотографии</h1>
+        <p>Четыре времени года в картинках — они дополняют раздел
+            <a href="info.html#seasons">«Времена года»</a> на информационной странице.
+            Последняя картинка — миниатюра: нажмите на неё, и большое изображение
+            откроется в новой вкладке.</p>
+
+        <!-- Каждая карточка — figure (картинка) + figcaption (подпись).
+             Атрибуты width и height сохраняют пропорции 3 : 2 -->
+        <figure>
+            <img src="image/winter.svg" alt="Зимний пейзаж: заснеженные холмы, две ели и снеговик в красном шарфе" width="240" height="160">
+            <figcaption><b>Зима.</b> Декабрь — февраль. Самые короткие дни и самое низкое солнце в году.</figcaption>
+        </figure>
+
+        <figure>
+            <img src="image/spring.svg" alt="Весенний пейзаж: цветущее розовым дерево на зелёном холме, ручей и птицы" width="240" height="160">
+            <figcaption><b>Весна.</b> Март — май. После весеннего равноденствия день становится длиннее ночи.</figcaption>
+        </figure>
+
+        <figure>
+            <img src="image/summer.svg" alt="Летний пейзаж: пшеничное поле с васильками, раскидистое дерево и яркое солнце" width="240" height="160">
+            <figcaption><b>Лето.</b> Июнь — август. Около 21&nbsp;июня — самый длинный день в году.</figcaption>
+        </figure>
+
+        <figure>
+            <img src="image/autumn.svg" alt="Осенний пейзаж: оранжевое, красное и жёлтое деревья, листопад и лужа" width="240" height="160">
+            <figcaption><b>Осень.</b> Сентябрь — ноябрь. Листья меняют цвет, а день снова становится короче.</figcaption>
+        </figure>
+
+        <!-- Миниатюра-ссылка: картинка шириной 100 px открывает big_img.html в новой вкладке -->
+        <figure>
+            <a href="big_img.html" target="_blank" rel="noopener" title="Открыть большое изображение в новой вкладке"><img src="image/lake.svg" alt="Миниатюра: горное озеро на закате — открыть в полном размере" width="100" height="67"></a>
+            <figcaption><b>Фото-ссылка.</b> Горное озеро на закате. Нажмите на миниатюру,
+                чтобы открыть изображение 600&nbsp;×&nbsp;400 в новой вкладке.</figcaption>
+        </figure>
+    </main>
+
+    <footer>
+        <hr>
+        <p><small>Учебный сайт · контрольная работа по HTML и JavaScript</small></p>
+    </footer>
+
+    <!-- Выделение текущей страницы и подсветка пунктов меню -->
+    <script src="scripts/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="icon" href="image/logo.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- ===== Общее меню (одинаковое на всех страницах) ===== -->
+    <header>
+        <nav aria-label="Основное меню">
+            <div>
+                <a class="nav__logo" href="index.html" title="На главную"><img src="image/logo.svg" alt="Логотип сайта — на главную" width="40" height="40"></a>
+                <b>Учебный сайт</b>
+            </div>
+            <ul class="nav__list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="info.html">Информация</a></li>
+                <li><a href="info.html#recipe">Закладка: рецепт</a></li>
+                <li><a href="test_img.html">Фото</a></li>
+                <li><a href="table.html">Таблица</a></li>
+                <li><a href="form.html">Формы</a></li>
+                <li><a href="DOM.html">DOM_JS</a></li>
+                <li><a href="passport.html">Кириллица → латиница</a></li>
+                <li><a href="task.html">Задача</a></li>
+                <li><a href="https://www.hse.ru/" target="_blank" rel="noopener">НИУ ВШЭ ↗</a> <small>(в новой вкладке)</small></li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        <h1>Учебный сайт на HTML и JavaScript</h1>
+        <p>Сайт собран для контрольной работы: на нём показаны основные элементы
+            HTML-страниц — тексты, списки, изображения, таблицы, формы — и работа
+            JavaScript со страницей через DOM.</p>
+
+        <section id="sections">
+            <h2>Разделы сайта</h2>
+
+            <h3>Информационные страницы</h3>
+            <ul>
+                <li><a href="info.html"><b>Информация</b></a> — рецепт, времена года и текст о смене
+                    сезонов; списки, разделители и переходы по закладкам вверх и вниз.</li>
+                <li><a href="test_img.html"><b>Фото</b></a> — изображения с подписями; миниатюра
+                    открывает большое фото в новой вкладке.</li>
+                <li><a href="table.html"><b>Таблица</b></a> — таблица с фоновым изображением,
+                    картинками в ячейках и гиперссылками.</li>
+                <li><a href="form.html"><b>Формы</b></a> — форма контактных данных и форма с полями
+                    разных типов.</li>
+            </ul>
+
+            <h3>Задания на DOM и JavaScript</h3>
+            <ul>
+                <li><a href="DOM.html"><b>DOM_JS</b></a> — шаблон паспорта картинкой с данными поверх неё,
+                    переключение на загранпаспорт; считываем фамилию, имя и год рождения из DOM.</li>
+                <li><a href="passport.html"><b>Кириллица → латиница</b></a> — по клику на кнопку
+                    данные паспорта меняются с кириллицы на латиницу и обратно.</li>
+                <li><a href="task.html"><b>Задача</b></a> — решение алгоритмической задачи:
+                    JavaScript проверяет данные и выдаёт ответ.</li>
+            </ul>
+        </section>
+
+        <section id="how-to">
+            <h2>Как пользоваться сайтом</h2>
+            <ol>
+                <li>Выберите раздел в меню вверху страницы. Пункт открытой страницы
+                    выделен <mark><b>жёлтым и жирным</b></mark>, пункт под курсором — <mark>жёлтым</mark>.</li>
+                <li>Пункт «Закладка: рецепт» сразу открывает нужный раздел
+                    информационной страницы.</li>
+                <li>Логотип в меню всегда возвращает на эту главную страницу.</li>
+                <li>Ссылки со стрелкой&nbsp;↗ ведут на внешние сайты и открываются
+                    в новой вкладке.</li>
+            </ol>
+        </section>
+
+        <section id="about">
+            <h2>О сайте</h2>
+            <p>Использованы только две технологии, без CSS, библиотек и сборщиков:</p>
+            <ul>
+                <li><b>HTML5</b> — структура страниц и всё оформление: заголовки, списки,
+                    таблицы, выделение тегами <code>&lt;mark&gt;</code> и <code>&lt;b&gt;</code>;</li>
+                <li><b>JavaScript</b> — выделение пунктов меню и интерактивные задания.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <hr>
+        <p><small>Учебный сайт · контрольная работа по HTML и JavaScript</small></p>
+    </footer>
+
+    <!-- Выделение текущей страницы и подсветка пунктов меню -->
+    <script src="scripts/nav.js"></script>
+</body>
+</html>
